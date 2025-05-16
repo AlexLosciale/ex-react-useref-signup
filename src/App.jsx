@@ -10,6 +10,26 @@ function App() {
   const [descrizione, setDescrizione] = useState('');
 
   const [errori, setErrori] = useState({});
+  const [passwordMsg, setPasswordMsg] = useState('');
+  const [descrizioneMsg, setDescrizioneMsg] = useState('');
+
+  const lettere = "abcdefghijklmnopqrstuvwxyz";
+  const numeri = "0123456789";
+  const simboli = "!@#$%^&*()-_=+[]{}|;:'\\\",.<>?/`~";
+
+  const validaPassword = (val) => {
+    const haLettera = [...val].some((c) => lettere.includes(c.toLowerCase()));
+    const haNumero = [...val].some((c) => numeri.includes(c));
+    const haSimbolo = [...val].some((c) => simboli.includes(c));
+    const valida = val.length >= 8 && haLettera && haNumero && haSimbolo;
+    setPasswordMsg(valida ? '✅ Password valida' : '❌ Almeno 8 caratteri, 1 lettera, 1 numero, 1 simbolo');
+  };
+
+  const validaDescrizione = (val) => {
+    const trimmed = val.trim();
+    const valida = trimmed.length >= 100 && trimmed.length <= 1000;
+    setDescrizioneMsg(valida ? '✅ Descrizione valida' : '❌ Minimo 100 e massimo 1000 caratteri');
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -44,6 +64,8 @@ function App() {
       setSpecializzazione('');
       setAnniEsperienza('');
       setDescrizione('');
+      setPasswordMsg('');
+      setDescrizioneMsg('');
       setErrori({});
     }
   };
@@ -76,6 +98,7 @@ function App() {
             {errori.cognome && <p className="error">{errori.cognome}</p>}
           </div>
         </div>
+
         {/* Password + Specializzazione + Anni */}
         <div className="form-row">
           <div className="form-section third">
@@ -84,11 +107,18 @@ function App() {
               type="password"
               id="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                validaPassword(e.target.value);
+              }}
               placeholder="••••••••"
             />
+            {password && (
+              <p className={passwordMsg.includes('✅') ? 'valid' : 'error'}>{passwordMsg}</p>
+            )}
             {errori.password && <p className="error">{errori.password}</p>}
           </div>
+
           <div className="form-section third">
             <label htmlFor="specializzazione">Specializzazione</label>
             <select
@@ -103,6 +133,7 @@ function App() {
             </select>
             {errori.specializzazione && <p className="error">{errori.specializzazione}</p>}
           </div>
+
           <div className="form-section third">
             <label htmlFor="anniEsperienza">Anni di esperienza</label>
             <input
@@ -126,10 +157,18 @@ function App() {
           <textarea
             id="descrizione"
             value={descrizione}
-            onChange={(e) => setDescrizione(e.target.value)}
+            onChange={(e) => {
+              setDescrizione(e.target.value);
+              validaDescrizione(e.target.value);
+            }}
             placeholder="Scrivi qualcosa su di te..."
             rows="5"
           />
+          {descrizione && (
+            <p className={descrizioneMsg.includes('✅') ? 'valid' : 'error'}>
+              {descrizioneMsg}
+            </p>
+          )}
           {errori.descrizione && <p className="error">{errori.descrizione}</p>}
         </div>
 
