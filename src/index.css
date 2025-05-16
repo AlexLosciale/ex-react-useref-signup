@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+.App {
+  padding: 2rem;
+  max-width: 700px;
+  margin: 2rem auto;
+  font-family: 'Inter', sans-serif;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 220px;
+}
+
+.form-section label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #555;
+  transition: color 0.3s ease;
+}
+
+.form-section input,
+.form-section select,
+.form-section textarea {
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  border: 1.8px solid #ddd;
+  border-radius: 8px;
+  background-color: #fafafa;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-family: 'Inter', sans-serif;
+  color: #333;
+}
+
+.form-section input::placeholder,
+.form-section textarea::placeholder {
+  color: #aaa;
+}
+
+.form-section input:focus,
+.form-section select:focus,
+.form-section textarea:focus {
+  outline: none;
+  border-color: #4f46e5; /* viola/blu scuro */
+  box-shadow: 0 0 8px rgba(79, 70, 229, 0.3);
+}
+
+.half {
+  flex: 1 1 48%;
+}
+
+.third {
+  flex: 1 1 30%;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+  background-color: #fff;
+}
+
+/* Bottone di invio */
+button.submit-btn {
+  align-self: flex-start;
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(90deg, #4f46e5, #8b5cf6);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(143, 99, 246, 0.5);
+  transition: background 0.3s ease, transform 0.2s ease;
+  user-select: none;
+  margin-top: 1rem;
+}
+
+button.submit-btn:hover {
+  background: linear-gradient(90deg, #4338ca, #7c3aed);
+  transform: translateY(-2px);
+}
+
+button.submit-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 6px rgba(143, 99, 246, 0.3);
+}
