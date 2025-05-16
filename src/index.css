@@ -103,3 +103,48 @@ button.submit-btn:active {
   transform: translateY(0);
   box-shadow: 0 3px 6px rgba(143, 99, 246, 0.3);
 }
+
+.error {
+  color: #d93025;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.half {
+  flex: 1 1 48%;
+  min-width: 200px;
+}
+
+.third {
+  flex: 1 1 30%;
+  min-width: 150px;
+}
+
+/* Mantieni errori e submit come prima */
+.error {
+  color: #d93025;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+.submit-btn {
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.8rem;
+  font-size: 1.1rem;
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #4338ca;
+}
